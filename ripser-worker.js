@@ -1,4 +1,15 @@
-importScripts('emscripten/ripser.js');
+var Module = {};
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'emscripten/ripser.wasm', true);
+          xhr.responseType = 'arraybuffer';
+          xhr.onload = function() {
+            Module.wasmBinary = xhr.response;
+            importScripts('emscripten/ripser.js');
+          };
+          xhr.send(null);
+
+
 
 addEventListener('message', function(e) {
     var data = e.data;

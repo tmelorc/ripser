@@ -9,8 +9,7 @@ var worker;
 var dimMin;
 
 function init() {
-    if (navigator.mimeTypes['application/x-pnacl'] == undefined)
-		(worker = new Worker("ripser-worker.js")).addEventListener("message", handleMessage, false);
+    (worker = new Worker("ripser-worker.js")).addEventListener("message", handleMessage, false);
 
     fileInput.addEventListener("change", read_and_compute);
     
